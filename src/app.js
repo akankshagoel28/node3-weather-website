@@ -1,8 +1,9 @@
 const path = require("path");
 const express = require('express')
-const hbs = require('hbs');
 const forecast = require('./utils/forecast')
 const geocode = require('./utils/geocode')
+var exphbs  = require('express-handlebars');
+var hbs = exphbs.create({ /* config */ });
 
 const app = express()
 const port=process.env.PORT||3000
