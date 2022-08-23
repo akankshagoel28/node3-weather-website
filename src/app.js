@@ -6,7 +6,7 @@ const geocode = require('./utils/geocode')
 
 
 const app = express()
-c onst port=process.env.PORT||3000
+const port=process.env.PORT||3000
 //Define paths for Express aconfig
 const publicDirectoryPath = path.join(__dirname, '../public')
 const viewsPath = path.join(__dirname, '../templates/views')
