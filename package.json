@@ -11,10 +11,10 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.18.1",
+    "express-handlebars": "^6.0.6",
     "postman-request": "^2.88.1-postman.31",
     "request": "^2.88.2"
   },
-  "devDependencies": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/akankshagoel28/node3-weather-website.git"
