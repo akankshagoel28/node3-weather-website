@@ -13,7 +13,7 @@ const publicDirectoryPath = path.join(__dirname, './public')
 var handlebars = require('express-handlebars').create({
     layoutsDir: path.join(__dirname, "../views/layouts"),
     partialsDir: path.join(__dirname, "../views/partials"),
-    defaultLayout: 'index',
+    defaultLayout: false,
     extname: 'hbs'
 });
 
