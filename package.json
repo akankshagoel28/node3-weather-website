@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node src/app.js"
+    "start": "node src/app.js",
+    "dev": "nodemon src/app.js -e js,hbs"
   },
   "keywords": [],
   "author": "",
@@ -22,5 +23,8 @@
   "bugs": {
     "url": "https://github.com/akankshagoel28/node3-weather-website/issues"
   },
-  "homepage": "https://github.com/akankshagoel28/node3-weather-website#readme"
+  "homepage": "https://github.com/akankshagoel28/node3-weather-website#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.19"
+  }
 }
