@@ -2,28 +2,31 @@ const path = require("path");
 const express = require('express')
 const forecast = require('./utils/forecast')
 const geocode = require('./utils/geocode')
-var exphbs  = require('express-handlebars');
-
-
-
 const app = express()
-const port=process.env.PORT||3000
+
+const port = process.env.PORT || 3000
+
 //Define paths for Express aconfig
-const publicDirectoryPath = path.join(__dirname, '../public')
-const viewsPath = path.join(__dirname, '../templates/views')
-const partialsPath = path.join(__dirname, '../templates/partials')
+const publicDirectoryPath = path.join(__dirname, './public')
 
 //Setup handlebars and views location
-app.engine('.hbs', exphbs({extname: '.hbs'})); 
-app.set('view engine', 'hbs')
-app.set('views', viewsPath)
-hbs.registerPartials(partialsPath)
+var handlebars = require('express-handlebars').create({
+    layoutsDir: path.join(__dirname, "../views/layouts"),
+    partialsDir: path.join(__dirname, "../views/partials"),
+    defaultLayout: 'index',
+    extname: 'hbs'
+});
+
+app.engine('hbs', handlebars.engine);
+app.set('view engine', 'hbs');
+app.set('views', path.join(__dirname, "../views/layouts"))
+
 
 //Setup static directory to serve
 app.use(express.static(publicDirectoryPath))
 
 
-app.get('', (req, res) => {
+app.get('/', (req, res) => {
     res.render('index', {
         title: 'Weather App',
         name: 'Akanksha Goel'
@@ -51,10 +54,10 @@ app.get('/weather', (req, res) => {
             error: 'You must provide a search term'
         })
     }
-    geocode(req.query.address, (error, { latitude, longitude, location }={
-         
+    geocode(req.query.address, (error, { latitude, longitude, location } = {
+
     }) => {
-        if (error) 
+        if (error)
             return res.send({ error })
         forecast(latitude, longitude, (error, foreCastData) => {
             if (error)
@@ -90,5 +93,5 @@ app.get('*', (req, res) => {
 //app.com/help
 //app.com/about
 app.listen(port, () => {
-    console.log('Server is up on port '+port)
+    console.log('Server is up on port ' + port)
 })
